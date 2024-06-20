@@ -28,6 +28,7 @@ export default function ServerControls() {
     <>
       {showStats ? <Stats className="stats-panel" /> : null}
       <Stack gap="xs">
+
         <TextInput
           label="Server"
           defaultValue={viewer.useGui((state) => state.server)}

@@ -30,6 +30,7 @@ from ._gui_handles import (
     GuiDropdownHandle,
     GuiEvent,
     GuiFolderHandle,
+    GuiImageViewerHandle,
     GuiInputHandle,
     GuiMarkdownHandle,
     GuiModalHandle,
@@ -731,6 +732,56 @@ class GuiApi:
             )._impl
         )
 
+    def add_image_viewer(
+        self,
+        base_64_image: str,
+        order: float | None = None,
+    ) -> GuiImageViewerHandle:
+        # Create a unique ID for the image viewer
+        id = _make_unique_id()
+        order = _apply_default_order(order)
+
+        # Encode the image to base64
+        base_64_image = base_64_image
+
+        # Send the image viewer creation message to the client
+        self._websock_interface.queue_message(
+            _messages.GuiAddImageViewerMessage(
+                order=order,
+                id=id,
+                label="",
+                container_id=self._get_container_id(),
+                hint="This is an image viewer",
+                value=base_64_image,
+                disabled=False,
+                visible=True,
+            )
+        )
+
+        # Create the handle and return it
+        handle = GuiImageViewerHandle(
+            value=base_64_image,
+            _impl=_GuiHandleState(
+                label="",
+                typ=str,
+                gui_api=self,
+                value=base_64_image,
+                update_timestamp=time.time(),
+                parent_container_id=self._get_container_id(),
+                update_cb=[],
+                is_button=False,
+                sync_cb=None,
+                disabled=False,
+                visible=True,
+                id=id,
+                order=order,
+                hint=None,
+                message_type=_messages.GuiAddImageViewerMessage,
+            ),
+        )
+
+        return handle
+
     def add_upload_button(
         self,
         label: str,
@@ -812,7 +863,8 @@ class GuiApi:
         disabled: bool = False,
         hint: str | None = None,
         order: float | None = None,
-    ) -> GuiButtonGroupHandle[TLiteralString]: ...
+    ) -> GuiButtonGroupHandle[TLiteralString]:
+        ...
 
     @overload
     def add_button_group(
@@ -823,7 +875,8 @@ class GuiApi:
         disabled: bool = False,
         hint: str | None = None,
         order: float | None = None,
-    ) -> GuiButtonGroupHandle[TString]: ...
+    ) -> GuiButtonGroupHandle[TString]:
+        ...
 
     def add_button_group(
         self,
@@ -1151,7 +1204,8 @@ class GuiApi:
         visible: bool = True,
         hint: str | None = None,
         order: float | None = None,
-    ) -> GuiDropdownHandle[TLiteralString]: ...
+    ) -> GuiDropdownHandle[TLiteralString]:
+        ...
 
     @overload
     def add_dropdown(
@@ -1163,7 +1217,8 @@ class GuiApi:
         visible: bool = True,
         hint: str | None = None,
         order: float | None = None,
-    ) -> GuiDropdownHandle[TString]: ...
+    ) -> GuiDropdownHandle[TString]:
+        ...
 
     def add_dropdown(
         self,

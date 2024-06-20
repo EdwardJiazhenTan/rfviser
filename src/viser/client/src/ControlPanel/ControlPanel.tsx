@@ -1,7 +1,6 @@
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import GeneratedGuiContainer from "./Generated";
 import { ViewerContext } from "../App";
-
 import QRCode from "react-qr-code";
 import ServerControls from "./ServerControls";
 import {

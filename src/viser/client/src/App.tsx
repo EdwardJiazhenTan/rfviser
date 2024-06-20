@@ -2,7 +2,6 @@
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "./App.css";
-
 import { Notifications } from "@mantine/notifications";
 
 import {
@@ -220,7 +219,7 @@ function ViewerContents() {
                 <ViserLogo />
               ) : null}
             </Box>
-            <ControlPanel control_layout={control_layout} />
+            <ControlPanel control_layout={control_layout}  />
           </Box>
         </Box>
       </MantineProvider>

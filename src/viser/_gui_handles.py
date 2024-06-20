@@ -42,7 +42,8 @@ class GuiContainerProtocol(Protocol):
 
 
 class SupportsRemoveProtocol(Protocol):
-    def remove(self) -> None: ...
+    def remove(self) -> None:
+        ...
 
 
 @dataclasses.dataclass
@@ -247,6 +248,14 @@ class GuiButtonHandle(_GuiInputHandle[bool]):
         """Attach a function to call when a button is pressed. Happens in a thread."""
         self._impl.update_cb.append(func)
         return func
+
+
+@dataclasses.dataclass
+class GuiImageViewerHandle(_GuiInputHandle[str]):
+    """Handle for an image viewer input in our visualizer."""
+
+    value: str
+    """the base64 encoded image to display in the image """
 
 
 @dataclasses.dataclass
