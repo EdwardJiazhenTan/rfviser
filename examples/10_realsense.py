@@ -11,7 +11,7 @@ import contextlib
 import numpy as np
 import numpy.typing as npt
 import pyrealsense2 as rs  # type: ignore
-import viser
+import rfviser
 from tqdm.auto import tqdm
 
 
@@ -92,7 +92,7 @@ def point_cloud_arrays_from_frames(
 
 def main():
     # Start visualization server.
-    server = viser.ViserServer()
+    server = rfviser.ViserServer()
 
     with realsense_pipeline() as pipeline:
         for i in tqdm(range(10000000)):

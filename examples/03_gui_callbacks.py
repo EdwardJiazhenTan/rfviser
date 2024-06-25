@@ -6,12 +6,12 @@ we get updates."""
 import time
 
 import numpy as onp
-import viser
+import rfviser
 from typing_extensions import assert_never
 
 
 def main() -> None:
-    server = viser.ViserServer()
+    server = rfviser.ViserServer()
 
     gui_reset_scene = server.gui.add_button("Reset Scene")
 
