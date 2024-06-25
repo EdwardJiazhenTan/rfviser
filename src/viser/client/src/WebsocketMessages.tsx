@@ -350,6 +350,18 @@ export interface GuiAddMarkdownMessage {
   container_id: string;
   visible: boolean;
 }
+/** GuiAddImageViewerMessage(order: 'float', id: 'str', images: 'Dict[str, Tuple[str, List[float]]]', container_id: 'str', visible: 'bool')
+ *
+ * (automatically generated)
+ */
+export interface GuiAddImageViewerMessage {
+  type: "GuiAddImageViewerMessage";
+  order: number;
+  id: string;
+  images: { [key: string]: [string, number[]] };
+  container_id: string;
+  visible: boolean;
+}
 /** GuiAddPlotlyMessage(order: 'float', id: 'str', plotly_json_str: 'str', aspect: 'float', container_id: 'str', visible: 'bool')
  *
  * (automatically generated)
@@ -423,21 +435,6 @@ export interface GuiAddButtonMessage {
     | "teal"
     | null;
   icon_html: string | null;
-}
-/** GuiAddImageViewerMessage(order: 'float', id: 'str', label: 'str', container_id: 'str', hint: 'str', value: 'str', visible: 'bool', disabled: 'bool')
- *
- * (automatically generated)
- */
-export interface GuiAddImageViewerMessage {
-  type: "GuiAddImageViewerMessage";
-  order: number;
-  id: string;
-  label: string;
-  container_id: string;
-  hint: string;
-  value: string;
-  visible: boolean;
-  disabled: boolean;
 }
 /** GuiAddUploadButtonMessage(order: 'float', id: 'str', label: 'str', container_id: 'str', hint: 'Optional[str]', value: 'Any', visible: 'bool', disabled: 'bool', color: "Optional[Literal['dark', 'gray', 'red', 'pink', 'grape', 'violet', 'indigo', 'blue', 'cyan', 'green', 'lime', 'yellow', 'orange', 'teal']]", icon_html: 'Optional[str]', mime_type: 'str')
  *
@@ -883,11 +880,11 @@ export type Message =
   | ResetSceneMessage
   | GuiAddFolderMessage
   | GuiAddMarkdownMessage
+  | GuiAddImageViewerMessage
   | GuiAddPlotlyMessage
   | GuiAddTabGroupMessage
   | _GuiAddInputBase
   | GuiAddButtonMessage
-  | GuiAddImageViewerMessage
   | GuiAddUploadButtonMessage
   | GuiAddSliderMessage
   | GuiAddMultiSliderMessage
@@ -919,10 +916,10 @@ export type Message =
 export type GuiAddComponentMessage =
   | GuiAddFolderMessage
   | GuiAddMarkdownMessage
+  | GuiAddImageViewerMessage
   | GuiAddPlotlyMessage
   | GuiAddTabGroupMessage
   | GuiAddButtonMessage
-  | GuiAddImageViewerMessage
   | GuiAddUploadButtonMessage
   | GuiAddSliderMessage
   | GuiAddMultiSliderMessage
