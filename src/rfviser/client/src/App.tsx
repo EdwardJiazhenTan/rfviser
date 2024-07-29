@@ -3,6 +3,7 @@ import "@mantine/core/styles.css";
 import '@mantine/carousel/styles.css';
 import "@mantine/notifications/styles.css";
 import "./App.css";
+import ViewSplat from "./components/ViewSplat";
 
 import { Notifications } from "@mantine/notifications";
 
@@ -151,6 +152,7 @@ function ViewerRoot() {
 
   return (
     <ViewerContext.Provider value={viewer}>
+      <ViewSplat/>
       <WebsocketMessageProducer />
       <ViewerContents />
     </ViewerContext.Provider>

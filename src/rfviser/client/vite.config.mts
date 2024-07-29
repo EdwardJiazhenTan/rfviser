@@ -6,6 +6,7 @@ import viteTsconfigPaths from "vite-tsconfig-paths";
 import svgrPlugin from "vite-plugin-svgr";
 import eslint from "vite-plugin-eslint";
 import browserslistToEsbuild from "browserslist-to-esbuild";
+import wasm from "vite-plugin-wasm";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     viteTsconfigPaths(),
     svgrPlugin(),
     vanillaExtractPlugin(),
+    wasm(),
   ],
   server: {
     port: 3000,
