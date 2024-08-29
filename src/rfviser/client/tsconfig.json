@@ -7,8 +7,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowJs": true, // Add this option to allow JavaScript files
-    "outDir": "./dist", // Specify the output directory
+    "allowJs": true, 
+    "outDir": "./dist",
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,

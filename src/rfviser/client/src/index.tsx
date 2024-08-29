@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { Root } from "./App";
+import Root from "./App";
 import { enableMapSet } from "immer";
 
 enableMapSet();
